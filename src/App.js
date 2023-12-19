@@ -40,12 +40,15 @@ function App() {
       Message: userMessage
     }
 
-    axios.post('https://sheet.best/api/sheets/dbb6289a-58f8-4f5a-87a5-be954f7ec33f', data).then((response) => {
-    // console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    // axios.post('https://sheet.best/api/sheets/dbb6289a-58f8-4f5a-87a5-be954f7ec33f', data).then((response) => {})
+    // .catch(error => {
+    //   console.log(error);
+    // })
+
+    axios.post('https://script.google.com/macros/s/AKfycbzGFc_GkuXtZNV8VhOZBakNbGG85Dy3_kj8Ghk8v81vbGjyttxnePN_TN7lwEy0S-co2A/exec', data)
+    .then((response) => {console.log(response)})
+    .catch((error) => {console.log(error)})
+
     setUserName('');
     setUserMessage('');
 
@@ -136,5 +139,53 @@ function App() {
     </div>
   );
 }
+
+// function doPost(request) {
+//   const sheet = SpreadsheetApp
+//   .getActiveSheet()
+
+//   const {Name, Message} = request.parameter
+//   const lastRow = sheet.getLastRow() + 1
+
+//   if (!Name) {
+//     return ContentService.createTextOutput(JSON.stringify({success: false, error: `Не указано имя пользователя`}))
+//     .setMimeType(ContentService.MimeType.JSON)
+//   } else if (!Message) {
+//     return ContentService.createTextOutput(JSON.stringify({success: false, error: `Не указано сообщение`}))
+//     .setMimeType(ContentService.MimeType.JSON)
+//   }
+
+//   sheet.getRange(`A${lastRow}`).setValue(Name)
+//   sheet.getRange(`B${lastRow}`).setValue(Message)
+
+//   const result = getResult(request.parameter)
+
+//   return ContentService.createTextOutput(JSON.stringify(result))
+//   .setMimeType(ContentService.MimeType.JSON)
+// }
+
+// function doGet(request) {
+//   const result = getResult(request.parameter)
+//   return ContentService.createTextOutput(JSON.stringify(result))
+//   .setMimeType(ContentService.MimeType.JSON)
+// }
+
+// function getResult({Name, Message}) {
+//   const sheet = SpreadsheetApp
+//   .getActiveSheet()
+//   const lastRow = sheet.getLastRow() + 1
+//   const result = {success: true, Name, Message}
+
+//   for (let i= 2; i < lastRow; i++) {
+//     let currName = sheet.getRange(`A${i}`).getValue()
+//     let currMessage = sheet.getRange(`B${i}`).getValue()
+  
+//     if (currName == Name && (!Message || Message == currMessage)) {
+//       result.sum += sheet.getRange(`B${i}`).getValue()
+//     }
+//   }
+
+//   return result
+// }
 
 export default App;
