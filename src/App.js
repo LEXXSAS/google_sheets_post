@@ -45,7 +45,7 @@ function App() {
     //   console.log(error);
     // })
 
-    axios.post('https://script.google.com/macros/s/AKfycbzGFc_GkuXtZNV8VhOZBakNbGG85Dy3_kj8Ghk8v81vbGjyttxnePN_TN7lwEy0S-co2A/exec', data)
+    axios.post('https://script.google.com/macros/s/AKfycbxBvjMx8Y9mRHCk5azyJVdPnt-yQSQxq4_NlyYtsd5wdW_f0q24qaMXK0WIl2OQ2ENGWw/exec', data)
     .then((response) => {console.log(response)})
     .catch((error) => {console.log(error)})
 
