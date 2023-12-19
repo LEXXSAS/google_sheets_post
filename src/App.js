@@ -40,12 +40,15 @@ function App() {
       Message: userMessage
     }
 
-    axios.post('https://sheet.best/api/sheets/dbb6289a-58f8-4f5a-87a5-be954f7ec33f', data).then((response) => {
-    // console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    // axios.post('https://sheet.best/api/sheets/dbb6289a-58f8-4f5a-87a5-be954f7ec33f', data).then((response) => {})
+    // .catch(error => {
+    //   console.log(error);
+    // })
+
+    axios.post('https://script.google.com/macros/s/AKfycbzGFc_GkuXtZNV8VhOZBakNbGG85Dy3_kj8Ghk8v81vbGjyttxnePN_TN7lwEy0S-co2A/exec', data)
+    .then((response) => {console.log(response)})
+    .catch((error) => {console.log(error)})
+    
     setUserName('');
     setUserMessage('');
 
